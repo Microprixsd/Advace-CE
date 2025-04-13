@@ -63,16 +63,23 @@ public class RagingBusterProj : Projectile {
 		);
 	}
 }
-
-public class AbsorbWeapon : Weapon {
-	public Projectile absorbedProj;
-	public AbsorbWeapon(Projectile otherProj) {
-		index = (int)WeaponIds.UPParry;
-		weaponSlotIndex = 118;
-		killFeedIndex = 168;
-		this.absorbedProj = otherProj;
-		drawAmmo = false;
+public class BusterUnpoUpProj : Projectile
+{
+	public BusterUnpoUpProj(
+		Point pos, int xDir, Player player, ushort netProjId, bool rpc = false
+	)	: base(
+		pos, xDir, owner, "buster_unpo_up", netProjId, player
+	)  {
+		fadeSprite = "buster3_fade";
+		maxTime = 1.25f;
+		projId = (int)ProjIds.BusterUnpoUp;
+		vel.x = 0f;
+		vel.y = -500f;
+		if (rpc) {
+			rpcCreate(pos, owner, ownerPlayer, netId, xDir);
+		}
 	}
+
 }
 
 public class RCXParry : Weapon {

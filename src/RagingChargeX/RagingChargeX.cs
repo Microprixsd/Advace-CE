@@ -6,6 +6,7 @@ namespace MMXOnline;
 
 public class RagingChargeX : Character {
 	public int shotCount;
+	public float unpocrushCooldown;
 	public float punchCooldown;
 	public float saberCooldown;
 	public float parryCooldown;
@@ -86,7 +87,7 @@ public class RagingChargeX : Character {
 	}
 
 	public override bool attackCtrl() {
-		if (player.input.isWeaponRightPressed(player) && unpocrushCooldown = 2f;) {
+		if (player.input.isWeaponRightPressed(player) && unpocrushCooldown == 2) {
 			changeState(new UnlimitedCrushState(), true);
 			return true;
 		}
@@ -94,7 +95,7 @@ public class RagingChargeX : Character {
 			enterParry();
 			return true;
 		}
-		if (player.input.isHeld(Control.Special, player) && isCharging && getChargeLevel >= 1) {
+		if (player.input.isHeld(Control.Special, player) && isCharging && getChargeLevel() == 1) {
 			{
 				increaseCharge();
 			}
@@ -102,7 +103,7 @@ public class RagingChargeX : Character {
 			changeState(new XUPPunchState(grounded), true);
 			stopCharge();
 		}
-		if (player.input.isHeld(Control.Special, player) && isCharging && getChargeLevel >= 2) {
+		if (player.input.isHeld(Control.Special, player) && isCharging && getChargeLevel() == 2) {
 			{
 				increaseCharge();
 			}
@@ -110,11 +111,12 @@ public class RagingChargeX : Character {
 			changeState(new XUPPunchChargedState(), true);
 			stopCharge();
 		}
-		if (player.input.isHeld(Control.Down, player) && player.input.isPressed(Control.Dash, player) && Idle || charState is Dash)
+		if (player.input.isHeld(Control.Down, player) && player.input.isPressed(Control.Dash, player) && Idle || charState is Dash) {
 			{
 				changeState(new KickChargeState(), forceChange: true);
-				return;
+				return true;
 			}
+		}
 		if (player.input.isPressed(Control.Special1, player) && saberCooldown == 0) {
 			saberCooldown = 60;
 			changeState(new X6SaberState(grounded), true);

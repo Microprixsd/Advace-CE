@@ -10,6 +10,8 @@ public partial class RPCCreateProj : RPC {
 		{ (int)ProjIds.Buster, BusterProj.rpcInvoke },
 		{ (int)ProjIds.Buster2, Buster2Proj.rpcInvoke },
 		{ (int)ProjIds.BusterUnpo, RagingBusterProj.rpcInvoke },
+		{ (int)ProjIds.BusterUnpoUp, BusterUnpoUpProj.rpcInvoke },
+		{ (int)ProjIds.BusterUnpoDown, BusterUnpoDownProj.rpcInvoke },
 		{ (int)ProjIds.Buster3Light, Buster3LightProj.rpcInvoke },
 		{ (int)ProjIds.Buster3Giga, Buster3GigaProj.rpcInvoke },
 		{ (int)ProjIds.Buster3Max, Buster3MaxProj.rpcInvoke },

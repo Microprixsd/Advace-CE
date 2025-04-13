@@ -69,27 +69,27 @@ public class Buster2Proj : Projectile {
 public class BusterUnpoUpProj : Projectile
 {
 	public BusterUnpoUpProj(
-		Point pos, int xDir, Player player, ushort netProjId, bool rpc = false
+		Point pos, int xDir, Actor owner, Player player, ushort? netId, bool rpc = false
 	)	: base(
-		pos, xDir, owner, "buster_unpo_up", netProjId, player
+		pos, xDir, owner, "buster_unpo_up", netId, player	
 	)  {
 		fadeSprite = "buster3_fade";
 		maxTime = 1.25f;
 		projId = (int)ProjIds.BusterUnpoUp;
 		vel.x = 0f;
 		vel.y = -500f;
-		if (rpc)
-		{
+		if (rpc) {
 			rpcCreate(pos, owner, ownerPlayer, netId, xDir);
 		}
 	}
+
 }
-public class BusterUnpoUpProj : Projectile
+public class BusterUnpoDownProj : Projectile
 {
 	public BusterUnpoDownProj(
-		Point pos, int xDir, Player player, ushort netProjId, bool rpc = false
+			Point pos, int xDir, Actor owner, Player player, ushort? netId, bool rpc = false
 	)	: base(
-		pos, xDir, owner, "buster_unpo_down", netProjId, player
+		pos, xDir, owner, "buster_unpo_down", netId, player	
 	)  {
 		fadeSprite = "buster3_fade";
 		maxTime = 1.25f;
